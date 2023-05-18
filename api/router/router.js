@@ -20,8 +20,10 @@ router.post('/kayit',mv.loginPayloadCheck, (req, res, next) => {
         name:name
 
     }
-    const newdata = hobbits.push(newowner);
-    res.json(newdata);
+     hobbits.push(newowner);
+
+    
+    res.json(newowner);
     next();
     // Kayıt işlemleri
   } catch (error) {
