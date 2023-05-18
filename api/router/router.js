@@ -11,7 +11,7 @@ router.get('/owners', (req, res, next) => {
   }
 });
 
-router.post('/kayit',mv.loginPayloadCheck, (req, res, next) => {
+router.post('/kayit',mv.validateUserNameIsUnique,mv.loginPayloadCheck ,(req, res, next) => {
   try {
 
     const {name} = req.body;

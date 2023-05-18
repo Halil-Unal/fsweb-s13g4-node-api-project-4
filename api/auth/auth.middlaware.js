@@ -36,12 +36,24 @@ function passwordCheck(req, res, next) {
   }
 }
 
-
+function validateUserNameIsUnique(req,res,next){
+    try {
+        
+        const isExist = neowners.find(item=>item.name === req.body.name);
+        if(isExist){
+            res.status(400).json({message:"aynı kullanıcı adı mevcut."});
+        }else{
+            next();
+        }
+    } catch (error) {
+        next(error)
+    }
+}
 
 
 module.exports = {
 
     loginPayloadCheck,
-    passwordCheck,
+    passwordCheck,validateUserNameIsUnique
  
 }
