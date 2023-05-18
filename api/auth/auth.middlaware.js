@@ -18,21 +18,22 @@ function loginPayloadCheck(req,res,next){
 
 function passwordCheck(req, res, next) {
   const { name, password } = req.body;
- 
+  let isValidCredentials = false;
 
   for (let i = 0; i < neowners.length; i++) {
     const owner = neowners[i];
     if (owner.name === name && owner.password === password) {
-
-     
-      next();
+      isValidCredentials = true;
+      break;
     }
-    else {
-        res.status(400).json({message: "hatalı giriş"})
-      }
   }
 
-
+  if (isValidCredentials) {
+   
+    next();
+  } else {
+    res.status(400).json({message: "hatalı giriş"})
+  }
 }
 
 function validateUserNameIsUnique(req,res,next){
