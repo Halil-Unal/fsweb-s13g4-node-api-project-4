@@ -29,7 +29,7 @@ router.post('/kayit',mv.loginPayloadCheck, (req, res, next) => {
   }
 });
 
-router.post('/log',mv.passwordCheck ,mv.restricted,(req, res, next) => {
+router.post('/log',mv.passwordCheck ,(req, res, next) => {
     try {
       
           console.log("Welcome");
